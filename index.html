@@ -262,6 +262,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arsense.github.io/2018/01/27/java-class-file/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Clay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clay">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/27/java-class-file/" itemprop="url">java字节码速查笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-27T20:08:44+08:00">
+                2018-01-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/27/java-class-file/" class="leancloud_visitors" data-flag-title="java字节码速查笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="执行原理"><a href="#执行原理" class="headerlink" title="执行原理"></a>执行原理</h2><p>java文件到通过编译器编译成java字节码文件（也就是.class文件），这个过程是java编译过程；而我们的java虚拟机执行的就是字节码文件。不论该字节码文件来自何方，由哪种编译器编译，甚至是手写字节码文件，只要符合java虚拟机的规范，那么它就能够执行该字节码文件</p>
+<h2 id="字节码学习好文"><a href="#字节码学习好文" class="headerlink" title="字节码学习好文"></a>字节码学习好文</h2><ol>
+<li><a href="">http://blog.csdn.net/shenhonglei1234/article/details/54861958</a><br>IDEA配置快速查看java字节码</li>
+<li><a href="">http://www.jianshu.com/p/252f381a6bc4</a>  字节码基础学习笔记</li>
+<li><a href="">http://ifeve.com/javacode2bytecode/</a>   比较详细</li>
+</ol>
+<h2 id="查看字节码-以HelloWorld文件为实例"><a href="#查看字节码-以HelloWorld文件为实例" class="headerlink" title="查看字节码 (以HelloWorld文件为实例)"></a>查看字节码 (以HelloWorld文件为实例)</h2><ol>
+<li>javac –verbose查看运行类是加载了那些jar文件<br><code>javac –verbose HelloWorld.java</code><br>可以看到虚拟机编译时做了那些事情……</li>
+<li>j<code>ava –verbose HelloWorld</code><br>可以看到虚拟机运行一个程序时加载的jar包<br>更多内容查看<code>javac –help</code>命令</li>
+<li>javap查看字节码<br>首先使用javap –help可以查看到各种命令，各个命令什么作用，可以自己运行试试……<br>这里只测试<code>javap –c</code>和<code>javap –verbose</code><br><code>javap –c HelloWorld</code> 可以查看字节码，从中可以得到各种变量的信息等等<br>但是<code>javap –verbose</code>可以看到更加清楚的信息</li>
+</ol>
+<h3 id="简单的执行原理"><a href="#简单的执行原理" class="headerlink" title="简单的执行原理"></a>简单的执行原理</h3><ul>
+<li><code>iload_1</code> 整形压栈 同理</li>
+<li><code>float_1</code>  是浮点型压栈</li>
+<li><code>if_icmple 7</code> 如何栈顶参数1&lt;=2的值 则调到第7行</li>
+<li>被final修饰的变量我们称之为常量，在类文件中我们标识为ACC_FINAL。</li>
+<li>静态变量的标志 <code>flags: ACC_PUBLIC, ACC_STATIC</code></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+
+      
+      
+         <span id="/2018/01/27/java-class-file/" class="leancloud_visitors" data-flag-title="java字节码速查笔记">
+           &nbsp; | &nbsp;
+           <span class="post-meta-item-icon">
+             <i class="fa fa-eye"></i>
+           </span>
+           <span class="post-meta-item-text">阅读次数 </span>
+           <span class="leancloud-visitors-count"></span>
+          </span>
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://arsense.github.io/2018/01/25/buildHexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -547,7 +741,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -569,7 +763,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -679,6 +873,9 @@
     
 
   </div>
+
+
+  
 
   
 
