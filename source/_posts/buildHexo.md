@@ -4,6 +4,7 @@ date: 2018-01-25 15:48:20
 tags: hexo
 categories: 前端
 copyright: true
+thumbnail: https://goss.veer.com/creative/vcg/veer/1600water/veer-145757956.jpg 
 ---
 ## 1.Hexo简单介绍
 
@@ -38,7 +39,7 @@ Git是为了方便管理代码啊 github for windows也可以
 #### 配置github仓库
 1. 登陆你的github账号
 创建你的github库， 注意命名规则：<br>
-```javascript
+```
 你取的名字.github.io
 ``` 
 
@@ -51,54 +52,52 @@ Git是为了方便管理代码啊 github for windows也可以
 或者使用github for windows也行
 
 
-```javascript
-git clone 你的仓库地址
-``` 
+
+`git clone` 你的仓库地址
+
 ![](https://i.imgur.com/Aqh3u96.png)
 #### 安装初始化Hexo
 3. 安装Hexo
 在刚clone完的git bash界面输入命令<br>
-```javascript
- npm install -g hexo
-```  <br>
+
+ `npm install -g hexo`
+ <br>
  cmd也行
 
 
 安装完毕 输入命令
 
-```javascript
-hexo version
-``` 
+`hexo version`
+ 
 查看安装是否成功 
 
 ![](https://i.imgur.com/duEUaYV.png)
 
 4. 初始化 Hexo
 输入命令 <br>
-```javascript
-hexo init
-``` 
+
+`hexo init`
+
 初始化 完成hexo的创建
 5. 安装hexo相关插件到我们的博客目录下 这里是调用的node.js，命令如下<br>
 `npm start`<br>
-```javascript
-hexo s #全程是hexo server
-``` 
+
+`hexo s` #全程是hexo server
+
 下图是完全安装后的文件
 ![](https://i.imgur.com/6POGzQ8.png)
 ## 3. 运行Hexo
 1. 安装好hexo后，通过下面代码可以生成静态页面，生成的静态页面存储在public目录下: 
 <br>
-```avascript
-hexo g  #全称是hexo generate `
-```  
+
+`hexo g`  #全称是hexo generate `
+ 
 <br>
 2. 运行服务 开启端口
  开启预览访问端口（默认端口4000，git bash下 ‘ctrl + c’ 关闭server）输入命令
 
-```javascript
-hexo s #全程是hexo server
-```  
+`hexo s` #全程是hexo server
+ 
 
 下图表示运行成功 可以看到地址 我们访问http://localhost:4000/ 
 ，即可看到hexo自带的hello world 页面 
@@ -117,9 +116,9 @@ Next主题目前是最好看最流行的
 ### 安装主题 
 将next的代码clone到项目中，保存在github仓库中的`themes/next`目录下:
     
-```javascript
-$ git clone https://github.com/iissnan/hexo-theme-next themes/next
-```  
+
+`$ git clone https://github.com/iissnan/hexo-theme-next themes/next`
+
 
 ### 修改配置
 1. 修改根目录下的_config.yml配置文件： 
@@ -127,9 +126,9 @@ $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 新建的hexo文件中使用的是默认的主题landscape，将其修改为next（next为主题安装的目录名`themes/next`）
 2. 修改后运行输入命令
    
-```javascript
- hexo server -g  #为`hexo generate`及`hexo server`的缩写
-```  
+
+ `hexo server -g`  #为`hexo generate`及`hexo server`的缩写
+
 
 然后浏览器访问就可以看到我们变化的主题啦
 ![](https://i.imgur.com/3u9wnNW.png)
@@ -149,24 +148,24 @@ NexT 通过 Scheme 提供主题中的主题。 Mist 是 NexT 的第一款 Scheme
 ### 添加首页的标签栏
 
 1. 添加标签栏 
-```javascript
- hexo new page tags  
-``` 
+
+ `hexo new page tags ` 
+
 
 修改刚创建的tags文件夹(**github仓库目录\source\tags**)下的index.md文件： 
 ![](https://i.imgur.com/u6tQ9GQ.png)
 在`themes/next`目录下的_config.yml文件中，将 menu关键字 中 about 前面的注释去掉即可
 2. 添加分类
 
-```javascript
-   hexo new page categories 
-``` 
+
+   `hexo new page categories` 
+
 修改刚创建的categories文件夹(**github仓库目录\source\categories**)下的index.md文件
 3. 添加About 界面
 
-```javascript
- hexo new page about 
-```
+
+ `hexo new page about `
+
 在**themes/next**目录下的**_config.yml**文件中，将 menu关键字 中 about 前面的注释去掉即可 
 ![](https://i.imgur.com/xxH5Na2.png)
 同类型的操作还有配置 sitmap 和错误的404界面
