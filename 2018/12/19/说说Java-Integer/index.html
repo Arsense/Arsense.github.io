@@ -79,18 +79,27 @@
 
 
 
-<meta name="description" content="我们先看一段代码，很简单对不对  执行一下：  和大多数人心里想的不一样吧，好多人还在纠结，到底是全是true还是全是false呀。然而一个是true，一个是false，这是为什么呢？有的人根本不去思考，直接打开百度搜索去查找答案（一个个都是百度首席软件工程师）根据Java编译机制，.java文件在编译以后会生成.class文件给JVM加载执行，于是找到.class文件，反编译看了一下，发现编译器">
+<meta name="description" content="一 简单的例子我们先看一段代码，很简单对不对 执行一下： 和大多数人心里想的不一样吧，好多人还在纠结，到底是全是true还是全是false呀。然而一个是true，一个是false，这是为什么呢？有的人根本不去思考，直接打开百度搜索去查找答案（一个个都是百度首席软件工程师）根据Java编译机制，.java文件在编译以后会生成.class文件给JVM加载执行，于是找到.class文件，反编译看了一下，">
 <meta name="keywords" content="java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="说说Java Integer">
 <meta property="og:url" content="http://arsense.github.io/2018/12/19/说说Java-Integer/index.html">
 <meta property="og:site_name" content="Clay">
-<meta property="og:description" content="我们先看一段代码，很简单对不对  执行一下：  和大多数人心里想的不一样吧，好多人还在纠结，到底是全是true还是全是false呀。然而一个是true，一个是false，这是为什么呢？有的人根本不去思考，直接打开百度搜索去查找答案（一个个都是百度首席软件工程师）根据Java编译机制，.java文件在编译以后会生成.class文件给JVM加载执行，于是找到.class文件，反编译看了一下，发现编译器">
+<meta property="og:description" content="一 简单的例子我们先看一段代码，很简单对不对 执行一下： 和大多数人心里想的不一样吧，好多人还在纠结，到底是全是true还是全是false呀。然而一个是true，一个是false，这是为什么呢？有的人根本不去思考，直接打开百度搜索去查找答案（一个个都是百度首席软件工程师）根据Java编译机制，.java文件在编译以后会生成.class文件给JVM加载执行，于是找到.class文件，反编译看了一下，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-19T10:01:36.431Z">
+<meta property="og:image" content="https://i.imgur.com/qoUGBYC.png">
+<meta property="og:image" content="https://i.imgur.com/Fqq7bbW.png">
+<meta property="og:image" content="https://i.imgur.com/veb5MHu.png">
+<meta property="og:image" content="https://i.imgur.com/t17h8q9.png">
+<meta property="og:image" content="https://i.imgur.com/SSFarde.png">
+<meta property="og:image" content="https://i.imgur.com/7h0356A.png">
+<meta property="og:image" content="https://i.imgur.com/uN8vaT8.png">
+<meta property="og:image" content="https://i.imgur.com/fFcnUo2.png">
+<meta property="og:updated_time" content="2018-12-19T12:25:08.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="说说Java Integer">
-<meta name="twitter:description" content="我们先看一段代码，很简单对不对  执行一下：  和大多数人心里想的不一样吧，好多人还在纠结，到底是全是true还是全是false呀。然而一个是true，一个是false，这是为什么呢？有的人根本不去思考，直接打开百度搜索去查找答案（一个个都是百度首席软件工程师）根据Java编译机制，.java文件在编译以后会生成.class文件给JVM加载执行，于是找到.class文件，反编译看了一下，发现编译器">
+<meta name="twitter:description" content="一 简单的例子我们先看一段代码，很简单对不对 执行一下： 和大多数人心里想的不一样吧，好多人还在纠结，到底是全是true还是全是false呀。然而一个是true，一个是false，这是为什么呢？有的人根本不去思考，直接打开百度搜索去查找答案（一个个都是百度首席软件工程师）根据Java编译机制，.java文件在编译以后会生成.class文件给JVM加载执行，于是找到.class文件，反编译看了一下，">
+<meta name="twitter:image" content="https://i.imgur.com/qoUGBYC.png">
 
 
 
@@ -352,14 +361,15 @@
       
 
       
-        <p>我们先看一段代码，很简单对不对 </p>
-<p>执行一下： </p>
+        <h2 id="一-简单的例子"><a href="#一-简单的例子" class="headerlink" title="一 简单的例子"></a>一 简单的例子</h2><p>我们先看一段代码，很简单对不对<br><img src="https://i.imgur.com/qoUGBYC.png" alt=""></p>
+<p>执行一下：<br><img src="https://i.imgur.com/Fqq7bbW.png" alt=""></p>
 <p>和大多数人心里想的不一样吧，好多人还在纠结，到底是全是true还是全是false呀。<br>然而一个是true，一个是false，这是为什么呢？<br>有的人根本不去思考，直接打开百度搜索去查找答案（一个个都是百度首席软件工程师）<br>根据Java编译机制，.java文件在编译以后会生成.class文件给JVM加载执行，于是找到.class文件，反编译看了一下，发现编译器在编译我们的代码时，很调皮（聪明的）的在我们声明的变量加上了valueOf方法 ，代码变成了如下： </p>
-<p>看一下valueOf方法的实现 </p>
-<p>我们发现，Integer的作者在写这个类时，为了避免重复创建对象，对Integer值做了缓存，如果这个值在缓存范围内，直接返回缓存好的对象，否则new一个新的对象返回，那究竟这个缓存到底缓存了哪些内容呢？看一下IntegerCache这个类： </p>
-<p>这是一个内部静态类，该类只能在Integer这个类的内部访问，这个类在初始化的时候，会去加载JVM的配置，如果有值，就用配置的值初始化缓存数组，否则就缓存-128到127之间的值。<br>再来看看我们之前的代码： </p>
-<p>结论：我们在比较两个Integer对象的值时，无论是怎么声明的，都一定要使用equals去比较，不能用==，在Java中没有重载操作符这一说，特别是从其它语言转到Java的童鞋们要注意。equals我在其它文章里已经做了详细解说，传送门：说说Java里的equals（上） - 知乎专栏 </p>
-<p>思考以下代码的执行结果： </p>
+<p><img src="https://i.imgur.com/veb5MHu.png" alt=""><br>看一下valueOf方法的实现 </p>
+<p><img src="https://i.imgur.com/t17h8q9.png" alt=""></p>
+<h2 id="二-反编译以及源码分析"><a href="#二-反编译以及源码分析" class="headerlink" title="二 反编译以及源码分析"></a>二 反编译以及源码分析</h2><p>我们发现，Integer的作者在写这个类时，为了避免重复创建对象，对Integer值做了缓存，如果这个值在缓存范围内，直接返回缓存好的对象，否则new一个新的对象返回，那究竟这个缓存到底缓存了哪些内容呢？看一下IntegerCache这个类：<br> <img src="https://i.imgur.com/SSFarde.png" alt=""></p>
+<p>这是一个内部静态类，该类只能在Integer这个类的内部访问，这个类在初始化的时候，会去加载JVM的配置，如果有值，就用配置的值初始化缓存数组，<strong>否则就缓存-128到127之间的值</strong>。<br>这里其实也就是运用了jvm里面的常量池，也是JDK8做的优化，这样做有什么好处呢？<br>仔细思考一个 1-128这些数可能我们在很多代码中都要使用到，JVM底层自己初始化的操作也会用到，虚拟机的本来性能就有限，所以如果我们把这些使用频率很高的一开始就初始化放到常量池里，然后其他的类使用只需要引用其内存地址 不会额外的申请内存是不是也省了一些空间呢。</p>
+<p>再来看看我们之前的代码：<br> 看一下IntegerCache这个类：<br><img src="https://i.imgur.com/7h0356A.png" alt=""><br>结论：我们在比较两个Integer对象的值时，无论是怎么声明的，都一定要使用equals去比较，不能用==，在Java中没有重载操作符这一说，特别是从其它语言转到Java的童鞋们要注意。equals我在其它文章里已经做了详细解说。<br><img src="https://i.imgur.com/uN8vaT8.png" alt=""><br>思考以下代码的执行结果：</p>
+<p><img src="https://i.imgur.com/fFcnUo2.png" alt=""></p>
 
       
     </div>
@@ -400,8 +410,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/19/说说Java里的equals（上）/" rel="prev" title="说说Java里的equals（上）">
-                说说Java里的equals（上） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/19/String奇妙法（上）/" rel="prev" title="String奇妙法（上）">
+                String奇妙法（上） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -454,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -527,6 +546,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-简单的例子"><span class="nav-number">1.</span> <span class="nav-text">一 简单的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-反编译以及源码分析"><span class="nav-number">2.</span> <span class="nav-text">二 反编译以及源码分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
