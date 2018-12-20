@@ -79,18 +79,32 @@
 
 
 
-<meta name="description" content="说说Java里的equals（中）说说Java里的equals（中）在面向对象 - 知乎专栏 一文中，我们后续留了一个话题，引入了Set，我们知道Set里面的元素是不可以重复的，话不多说，上代码： 精简了上一章中的Person类，保留了isSame()方法; 想必大家看到类似的代码开始怀疑笔者是不是又挖坑让大伙跳了吧，来看一下结果。 没错，有坑，同样是对象，都是放到了set中，一个打印size()">
+<meta name="description" content="我们先看一下Set，我们知道Set里面的元素是不可以重复的，话不多说，上代码： 精简了上一章中的Person类，保留了isSame()方法;  想必大家看到类似的代码开始怀疑笔者是不是又挖坑让大伙跳了吧，来看一下结果。 没错，有坑，同样是对象，都是放到了set中，一个打印size()是1，另一个打印size()是2。在之前文章文中，我们在Person这个类，虽然写了一个isSame()方法来判断业">
 <meta name="keywords" content="java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="说说Java里的equals（中）">
 <meta property="og:url" content="http://arsense.github.io/2018/12/19/说Java里的equals（中）/index.html">
 <meta property="og:site_name" content="Clay">
-<meta property="og:description" content="说说Java里的equals（中）说说Java里的equals（中）在面向对象 - 知乎专栏 一文中，我们后续留了一个话题，引入了Set，我们知道Set里面的元素是不可以重复的，话不多说，上代码： 精简了上一章中的Person类，保留了isSame()方法; 想必大家看到类似的代码开始怀疑笔者是不是又挖坑让大伙跳了吧，来看一下结果。 没错，有坑，同样是对象，都是放到了set中，一个打印size()">
+<meta property="og:description" content="我们先看一下Set，我们知道Set里面的元素是不可以重复的，话不多说，上代码： 精简了上一章中的Person类，保留了isSame()方法;  想必大家看到类似的代码开始怀疑笔者是不是又挖坑让大伙跳了吧，来看一下结果。 没错，有坑，同样是对象，都是放到了set中，一个打印size()是1，另一个打印size()是2。在之前文章文中，我们在Person这个类，虽然写了一个isSame()方法来判断业">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-19T10:09:01.353Z">
+<meta property="og:image" content="https://i.imgur.com/QerTZAF.png">
+<meta property="og:image" content="https://i.imgur.com/lCsnhFP.png">
+<meta property="og:image" content="https://i.imgur.com/r0fw9Hj.png">
+<meta property="og:image" content="https://i.imgur.com/8Loevzu.png">
+<meta property="og:image" content="https://i.imgur.com/EgKRsyd.png">
+<meta property="og:image" content="https://i.imgur.com/dmdiUEr.png">
+<meta property="og:image" content="https://i.imgur.com/uDzu93q.png">
+<meta property="og:image" content="https://i.imgur.com/Y1sE3qH.png">
+<meta property="og:image" content="https://i.imgur.com/1YNSQhn.png">
+<meta property="og:image" content="https://i.imgur.com/XVmclmg.png">
+<meta property="og:image" content="https://i.imgur.com/Ulfx5Jx.png">
+<meta property="og:image" content="https://i.imgur.com/QquMNPH.png">
+<meta property="og:image" content="https://i.imgur.com/9T350nP.png">
+<meta property="og:updated_time" content="2018-12-20T09:56:14.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="说说Java里的equals（中）">
-<meta name="twitter:description" content="说说Java里的equals（中）说说Java里的equals（中）在面向对象 - 知乎专栏 一文中，我们后续留了一个话题，引入了Set，我们知道Set里面的元素是不可以重复的，话不多说，上代码： 精简了上一章中的Person类，保留了isSame()方法; 想必大家看到类似的代码开始怀疑笔者是不是又挖坑让大伙跳了吧，来看一下结果。 没错，有坑，同样是对象，都是放到了set中，一个打印size()">
+<meta name="twitter:description" content="我们先看一下Set，我们知道Set里面的元素是不可以重复的，话不多说，上代码： 精简了上一章中的Person类，保留了isSame()方法;  想必大家看到类似的代码开始怀疑笔者是不是又挖坑让大伙跳了吧，来看一下结果。 没错，有坑，同样是对象，都是放到了set中，一个打印size()是1，另一个打印size()是2。在之前文章文中，我们在Person这个类，虽然写了一个isSame()方法来判断业">
+<meta name="twitter:image" content="https://i.imgur.com/QerTZAF.png">
 
 
 
@@ -352,24 +366,25 @@
       
 
       
-        <h1 id="说说Java里的equals（中）"><a href="#说说Java里的equals（中）" class="headerlink" title="说说Java里的equals（中）"></a>说说Java里的equals（中）</h1><p>说说Java里的equals（中）<br>在面向对象 - 知乎专栏 一文中，我们后续留了一个话题，引入了Set，我们知道Set里面的元素是不可以重复的，话不多说，上代码：</p>
+        <p>我们先看一下Set，我们知道Set里面的元素是不可以重复的，话不多说，上代码：<br><img src="https://i.imgur.com/QerTZAF.png" alt=""></p>
 <p>精简了上一章中的Person类，保留了isSame()方法;</p>
-<p>想必大家看到类似的代码开始怀疑笔者是不是又挖坑让大伙跳了吧，来看一下结果。</p>
-<p>没错，有坑，同样是对象，都是放到了set中，一个打印size()是1，另一个打印size()是2。在面向对象 - 知乎专栏 一文中，我们在Person这个类，虽然写了一个isSame()方法来判断业务上是否相等，看上去是解决了当时的问题，然而不知不觉的为自己挖了坑。假设我们现在正在给用户批量发工资，张三出现了两次，虽然我们用Set去了重，但还是会给张三发两次工资。<br>在Java程序中，有很多的“公约”，我们称之为编程规范，遵守这些规范实现你的代码，会让你避开很多坑。要判断两个对象的内容是否相等，不要自己写方法（isSame()）去判断，而是应该重写父类的 equals方法（这里的父类是Object），在说说Java里的equals（上） - 知乎专栏一文中，我们说过String重写了equals()方法，所以这儿打印size结果是1，而Person没有重写，因此Set没法判断这两个”张三”是否是同一个人，打印size结果是2。<br>我们再看以下代码：</p>
+<p><img src="https://i.imgur.com/lCsnhFP.png" alt=""></p>
+<p>想必大家看到类似的代码开始怀疑笔者是不是又挖坑让大伙跳了吧，来看一下结果。<br><img src="https://i.imgur.com/r0fw9Hj.png" alt=""></p>
+<p>没错，有坑，同样是对象，都是放到了set中，一个打印size()是1，另一个打印size()是2。在之前文章文中，<strong>我们在Person这个类，虽然写了一个isSame()方法来判断业务上是否相等，看上去是解决了当时的问题，然而不知不觉的为自己挖了坑</strong>。假设我们现在正在给用户批量发工资，张三出现了两次，虽然我们用Set去了重，但还是会给张三发两次工资。</p>
+<p><strong>在Java程序中，有很多的“公约”，我们称之为编程规范，遵守这些规范实现你的代码，会让你避开很多坑。</strong>要判断两个对象的内容是否相等，不要自己写方法（isSame()）去判断，而是应该重写父类的 equals方法（这里的父类是Object），在说说Java里的equals（上）一文中，我们说过String重写了equals()方法，所以这儿打印size结果是1，而Person没有重写，因此Set没法判断这两个”张三”是否是同一个人，打印size结果是2。<br>我们再看以下代码：<br><img src="https://i.imgur.com/8Loevzu.png" alt=""></p>
 <p>结果当然是全是false（这个应该没人能答错了吧），看结果</p>
-<p>下面我们像String一样，重写一下Person的equals方法。</p>
-<p>看起来没问题，别忘 了，如果是重写方法，我们在方法上要加上@Override注解，加上该注解，编译器会帮你检查是否真的覆盖了父类的方法。编译一下，居然报错了。</p>
+<p><img src="https://i.imgur.com/EgKRsyd.png" alt=""><br>下面我们像String一样，重写一下Person的equals方法。<br><img src="https://i.imgur.com/dmdiUEr.png" alt=""></p>
+<p>看起来没问题，别忘 了，<strong>如果是重写方法，我们在方法上要加上@Override注解</strong>，加上该注解，编译器会帮你检查是否真的覆盖了父类的方法。编译一下，居然报错了。<br><img src="https://i.imgur.com/uDzu93q.png" alt=""></p>
 <p>原来我们跟本就不是重写（覆盖）了父类的equals方法，而是自己又写了一个参数为Person的equals方法，根本不是重写，只是重载了父类的方法而已。<br>重载：就是在同一个类中，方法的名字相同，但参数个数、参数的类型不同。</p>
-<p>重写：它是指子类和父类的关系，子类重写了父类的方法，但方法名、参数类型、参数个数必须相同<br>下面我们正确的覆盖一下。</p>
-<p>我们写一段测代码测试一下，这里我们引入了List。</p>
-<p>运行一下，perList里面我们只添加person1,并没有添加person2，但执行perList.contains(person2)打印的结果居然是true（List里面包含了person2），只因为重写了equals()方法，注意：pSet.contains(person2))依旧是false。</p>
-<p>再执行本文开始那段代码，不出所料，问题依旧</p>
-<p>很明显，Person这个类在重写equals()方法后，虽然已经支持List，但还不支持Set。要完美支持HashMap,HashSet,LinkedHashMap,ConcurrentHashMap等这些类，不但要重写equals方法，还需要重写hashCode()方法。<br>现在我们在Person类里重写一下hashCode()方法</p>
-<p>再执行一下，终于看到想要的结果了。</p>
-<p>再执行一下本开始那段代码，已经是我们想要的结果了。</p>
-<p>注：本文中提到的HashMap，HashSet，LinkedHashMap，ConcurrentHashMap，List，hashCode等后续专栏会讲解。</p>
+<p>重写：它是指子类和父类的关系，子类重写了父类的方法，但方法名、参数类型、参数个数必须相同<br>下面我们正确的覆盖一下。<br><img src="https://i.imgur.com/Y1sE3qH.png" alt=""></p>
+<p>我们写一段测代码测试一下，这里我们引入了List。<br><img src="https://i.imgur.com/1YNSQhn.png" alt=""><br>运行一下，<strong>perList里面我们只添加person1,并没有添加person2，但执行perList.contains(person2)打印的结果居然是true（List里面包含了person2），只因为重写了equals()方法</strong>，注意：pSet.contains(person2))依旧是false。</p>
+<p><img src="https://i.imgur.com/XVmclmg.png" alt=""><br>再执行本文开始那段代码，不出所料，问题依旧</p>
+<p><img src="https://i.imgur.com/Ulfx5Jx.png" alt=""></p>
+<p>很明显，Person这个类在重写equals()方法后，虽然已经支持List，但<strong>还不支持Set。要完美支持HashMap,HashSet,LinkedHashMap,ConcurrentHashMap等这些类，不但要重写equals方法，还需要重写hashCode()方法。<br>现在我们在Person类里重写一下hashCode()方法</strong></p>
+<p><img src="https://i.imgur.com/QquMNPH.png" alt=""><br>再执行一下，终于看到想要的结果了。</p>
+<p><img src="https://i.imgur.com/9T350nP.png" alt=""></p>
 <p>总结：当我们在实际业务中需要重写（覆盖）equals方法时，根据规范，我们一定要重写（覆盖）hashCode方法。在实际开发过程中，不建议一上来就重写equals方法，除非你有特殊的需求。<br>回答评论区的问题</p>
-<p>在文中一开始的示例中，person1,person2并不是同一个对象，默认equals方法是继承自Object的，也就相当于==，如果没有额外的需求明确name相同就视为同一个对象处理，就没有必要去重写equals方法了。</p>
+<p><strong>在文中一开始的示例中，person1,person2并不是同一个对象，默认equals方法是继承自Object的，也就相当于==，如果没有额外的需求明确name相同就视为同一个对象处理，就没有必要去重写equals方法了</strong>。</p>
 
       
     </div>
@@ -464,17 +479,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -546,22 +552,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说说Java里的equals（中）"><span class="nav-number">1.</span> <span class="nav-text">说说Java里的equals（中）</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

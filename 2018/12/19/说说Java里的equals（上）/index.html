@@ -79,18 +79,27 @@
 
 
 
-<meta name="description" content="说说Java里的equals（上）说说Java里的equals（上）在Java字符串那些事儿一文发表后，朋友给我留言说：比较字符串用equals不就完了呗，干嘛要用”==”，吃饱了撑的，能不能来点实际的。其实在文章里我是想表明，Java字符串两种声明方式在堆内存中不同的体现，我们在写代码过程中，为了避免重复的创建对象，尽量使用String s1 =”123” 而不是String s1 = new">
+<meta name="description" content="有的朋友说：比较字符串用equals不就完了呗，干嘛要用”==”，吃饱了撑的，能不能来点实际的。其实在文章里我是想表明，Java字符串两种声明方式在堆内存中不同的体现，我们在写代码过程中，为了避免重复的创建对象，尽量使用String s1 =&amp;quot;123&amp;quot; 而不是String s1 = new String(&amp;quot;123&amp;quot;)，因为JVM对前者给做了优化。那么，我们今">
 <meta name="keywords" content="java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="说说Java里的equals（上）">
 <meta property="og:url" content="http://arsense.github.io/2018/12/19/说说Java里的equals（上）/index.html">
 <meta property="og:site_name" content="Clay">
-<meta property="og:description" content="说说Java里的equals（上）说说Java里的equals（上）在Java字符串那些事儿一文发表后，朋友给我留言说：比较字符串用equals不就完了呗，干嘛要用”==”，吃饱了撑的，能不能来点实际的。其实在文章里我是想表明，Java字符串两种声明方式在堆内存中不同的体现，我们在写代码过程中，为了避免重复的创建对象，尽量使用String s1 =”123” 而不是String s1 = new">
+<meta property="og:description" content="有的朋友说：比较字符串用equals不就完了呗，干嘛要用”==”，吃饱了撑的，能不能来点实际的。其实在文章里我是想表明，Java字符串两种声明方式在堆内存中不同的体现，我们在写代码过程中，为了避免重复的创建对象，尽量使用String s1 =&amp;quot;123&amp;quot; 而不是String s1 = new String(&amp;quot;123&amp;quot;)，因为JVM对前者给做了优化。那么，我们今">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-19T10:08:57.308Z">
+<meta property="og:image" content="https://i.imgur.com/c8hTyVP.png">
+<meta property="og:image" content="https://i.imgur.com/Hlyeijf.png">
+<meta property="og:image" content="https://i.imgur.com/OGlouQ5.png">
+<meta property="og:image" content="https://i.imgur.com/uXBrvUM.png">
+<meta property="og:image" content="https://i.imgur.com/TJYR9Hu.png">
+<meta property="og:image" content="https://i.imgur.com/LXkfzoh.png">
+<meta property="og:image" content="https://i.imgur.com/XTggbqi.png">
+<meta property="og:image" content="https://i.imgur.com/a4KvFCX.png">
+<meta property="og:updated_time" content="2018-12-20T09:40:32.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="说说Java里的equals（上）">
-<meta name="twitter:description" content="说说Java里的equals（上）说说Java里的equals（上）在Java字符串那些事儿一文发表后，朋友给我留言说：比较字符串用equals不就完了呗，干嘛要用”==”，吃饱了撑的，能不能来点实际的。其实在文章里我是想表明，Java字符串两种声明方式在堆内存中不同的体现，我们在写代码过程中，为了避免重复的创建对象，尽量使用String s1 =”123” 而不是String s1 = new">
+<meta name="twitter:description" content="有的朋友说：比较字符串用equals不就完了呗，干嘛要用”==”，吃饱了撑的，能不能来点实际的。其实在文章里我是想表明，Java字符串两种声明方式在堆内存中不同的体现，我们在写代码过程中，为了避免重复的创建对象，尽量使用String s1 =&amp;quot;123&amp;quot; 而不是String s1 = new String(&amp;quot;123&amp;quot;)，因为JVM对前者给做了优化。那么，我们今">
+<meta name="twitter:image" content="https://i.imgur.com/c8hTyVP.png">
 
 
 
@@ -352,16 +361,19 @@
       
 
       
-        <h1 id="说说Java里的equals（上）"><a href="#说说Java里的equals（上）" class="headerlink" title="说说Java里的equals（上）"></a>说说Java里的equals（上）</h1><p>说说Java里的equals（上）<br>在Java字符串那些事儿一文发表后，朋友给我留言说：比较字符串用equals不就完了呗，干嘛要用”==”，吃饱了撑的，能不能来点实际的。其实在文章里我是想表明，Java字符串两种声明方式在堆内存中不同的体现，我们在写代码过程中，为了避免重复的创建对象，尽量使用String s1 =”123” 而不是String s1 = new String(“123”)，因为JVM对前者给做了优化。<br>那么，我们今天来说说equels，话不多说，上代码：</p>
-<p>执行一下，结果如下：</p>
+        <p>有的朋友说：比较字符串用equals不就完了呗，干嘛要用”==”，吃饱了撑的，能不能来点实际的。其实在文章里我是想表明，<strong>Java字符串两种声明方式在堆内存中不同的体现</strong>，我们在写代码过程中，为了避免重复的创建对象，尽量使用<code>String s1 =&quot;123&quot;</code> 而不是<code>String s1 = new String(&quot;123&quot;)</code>，因为JVM对前者给做了优化。<br>那么，我们今天来说说equels，话不多说，上代码：</p>
+<p><img src="https://i.imgur.com/c8hTyVP.png" alt=""></p>
+<p><img src="https://i.imgur.com/Hlyeijf.png" alt=""><br>执行一下，结果如下：</p>
+<p><img src="https://i.imgur.com/OGlouQ5.png" alt=""></p>
 <p>面试题中老问”==”与和equals有什么区别，甚至连百度搜索equals也会自动关联出equals和”==”的区别这一类的问题来。</p>
-<p>笔者一直认为，这两者之间没有必然的联系，在引用类型中，”==”是比较两个引用是否指向堆内存里的同一个地址（同一个对象），而equals是一个普通的方法，该方法返回的结果依赖于自身的实现。我们先看一下Person这个类，并没有equals方法呀，那为什么不报错呢？在Java中，如果一个类没有继承其它类，那么它默认继承Object这个类，打开Object这个类看一下，发现如下代码，Person这个类的equals方法就继承自这里</p>
+<p><img src="https://i.imgur.com/uXBrvUM.png" alt=""></p>
+<p>笔者一直认为，这两者之间没有必然的联系，在引用类型中，”==”是比较两个引用是否指向堆内存里的同一个地址（同一个对象）<strong>，而equals是一个普通的方法，该方法返回的结果依赖于自身的实现</strong>。我们先看一下Person这个类，并没有equals方法呀，那为什么不报错呢？在Java中，如果一个类没有继承其它类，那么它默认继承Object这个类，打开Object这个类看一下，发现如下代码，Person这个类的equals方法就继承自这里<br><img src="https://i.imgur.com/TJYR9Hu.png" alt=""></p>
 <p>很简单，就一句代码，判断两个引用是否指向同一个对象，两个Person对象在堆内存中的表现如下图所示：</p>
-<p>所以代码person1.equals(person2)等同于person1 == person2，当然打印出来的结果是false。我们再来看看Integer这个类， equals的实现如下：</p>
-<p>当代码执行到System.out.println(itr.equals(lon))时，会判断传入的lon这个对象是否是Integer类型，这里的lon是Long类型，所以打印出来的结果当然是false了。<br>最后是我们String的实现</p>
+<p><img src="https://i.imgur.com/LXkfzoh.png" alt=""><br>所以代码person1.equals(person2)等同于person1 == person2，当然打印出来的结果是false。我们再来看看Integer这个类， equals的实现如下：</p>
+<p><img src="https://i.imgur.com/XTggbqi.png" alt=""></p>
+<p>当代码执行到<code>System.out.println(itr.equals(lon))</code>时，会判断传入的lon这个对象是否是Integer类型，这里的lon是Long类型，所以打印出来的结果当然是false了。<br>最后是我们String的实现</p>
+<p><img src="https://i.imgur.com/a4KvFCX.png" alt=""></p>
 <p>当代码执行到：System.out.println(s3.equals(s4))，由于字符串底层char数组里存的都是{‘1’,’0’,’0’}当然打印出来是true了。</p>
-<p>如果喜欢本系列文章，请为我点赞或顺手分享，您的支持是我继续下去的动力，您也可以在评论区留言想了解的内容，有机会本专栏会做讲解，最后别忘了关注一下我。<br>转载无限欢迎，但请注明「作者」和「原文地址」。转载请在文中保留此段，感谢您对作者版权的尊重。如需商业转载或刊登，请联系作者获得授权。自助转载：骑士品牌馆</p>
-<p>来源： <a href="https://zhuanlan.zhihu.com/p/27573287" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27573287</a></p>
 
       
     </div>
@@ -392,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/19/String奇妙法（上）/" rel="next" title="String奇妙法（上）">
-                <i class="fa fa-chevron-left"></i> String奇妙法（上）
+              <a href="/2018/12/19/说说Java-Integer/" rel="next" title="说说Java Integer">
+                <i class="fa fa-chevron-left"></i> 说说Java Integer
               </a>
             
           </div>
@@ -401,6 +413,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/19/String奇妙法（上）/" rel="prev" title="String奇妙法（上）">
+                String奇妙法（上） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -452,17 +468,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -534,22 +541,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说说Java里的equals（上）"><span class="nav-number">1.</span> <span class="nav-text">说说Java里的equals（上）</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

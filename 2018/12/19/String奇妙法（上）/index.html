@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="String奇妙法（上）Java字符串那些事儿我们再来看一段代码：  运行一下：  没错，一个true，一个是false，（答错的小朋友去面壁去），大家可能在想编译器肯定又调皮了，编译的时候是不是又偷偷加了些什么，迫不及待的打开class文件看一下：  除了删掉了空行以外和我的java源文件一致呀，这回可冤枉编译器了，那为什么会导致不同的结果呢？我们都知道，Java代码是运行在JVM里的，那是不是">
+<meta name="description" content="我们再来看一段代码：  运行一下：  没错，一个true，一个是false，（答错的小朋友去面壁去），大家可能在想编译器肯定又调皮了，编译的时候是不是又偷偷加了些什么，迫不及待的打开class文件看一下：  除了删掉了空行以外和我的java源文件一致呀，这回可冤枉编译器了，那为什么会导致不同的结果呢？我们都知道，Java代码是运行在JVM里的，那是不是JVM在执行这段代码时给我们做了什么？在JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="String奇妙法（上）">
 <meta property="og:url" content="http://arsense.github.io/2018/12/19/String奇妙法（上）/index.html">
 <meta property="og:site_name" content="Clay">
-<meta property="og:description" content="String奇妙法（上）Java字符串那些事儿我们再来看一段代码：  运行一下：  没错，一个true，一个是false，（答错的小朋友去面壁去），大家可能在想编译器肯定又调皮了，编译的时候是不是又偷偷加了些什么，迫不及待的打开class文件看一下：  除了删掉了空行以外和我的java源文件一致呀，这回可冤枉编译器了，那为什么会导致不同的结果呢？我们都知道，Java代码是运行在JVM里的，那是不是">
+<meta property="og:description" content="我们再来看一段代码：  运行一下：  没错，一个true，一个是false，（答错的小朋友去面壁去），大家可能在想编译器肯定又调皮了，编译的时候是不是又偷偷加了些什么，迫不及待的打开class文件看一下：  除了删掉了空行以外和我的java源文件一致呀，这回可冤枉编译器了，那为什么会导致不同的结果呢？我们都知道，Java代码是运行在JVM里的，那是不是JVM在执行这段代码时给我们做了什么？在JVM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-19T10:00:40.293Z">
+<meta property="og:updated_time" content="2018-12-20T10:10:30.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String奇妙法（上）">
-<meta name="twitter:description" content="String奇妙法（上）Java字符串那些事儿我们再来看一段代码：  运行一下：  没错，一个true，一个是false，（答错的小朋友去面壁去），大家可能在想编译器肯定又调皮了，编译的时候是不是又偷偷加了些什么，迫不及待的打开class文件看一下：  除了删掉了空行以外和我的java源文件一致呀，这回可冤枉编译器了，那为什么会导致不同的结果呢？我们都知道，Java代码是运行在JVM里的，那是不是">
+<meta name="twitter:description" content="我们再来看一段代码：  运行一下：  没错，一个true，一个是false，（答错的小朋友去面壁去），大家可能在想编译器肯定又调皮了，编译的时候是不是又偷偷加了些什么，迫不及待的打开class文件看一下：  除了删掉了空行以外和我的java源文件一致呀，这回可冤枉编译器了，那为什么会导致不同的结果呢？我们都知道，Java代码是运行在JVM里的，那是不是JVM在执行这段代码时给我们做了什么？在JVM">
 
 
 
@@ -329,7 +329,7 @@
       
 
       
-        <h1 id="String奇妙法（上）"><a href="#String奇妙法（上）" class="headerlink" title="String奇妙法（上）"></a>String奇妙法（上）</h1><p>Java字符串那些事儿<br>我们再来看一段代码： </p>
+        <p>我们再来看一段代码： </p>
 <p>运行一下： </p>
 <p>没错，一个true，一个是false，（答错的小朋友去面壁去），大家可能在想编译器肯定又调皮了，编译的时候是不是又偷偷加了些什么，迫不及待的打开class文件看一下： </p>
 <p>除了删掉了空行以外和我的java源文件一致呀，这回可冤枉编译器了，那为什么会导致不同的结果呢？我们都知道，Java代码是运行在JVM里的，那是不是JVM在执行这段代码时给我们做了什么？<br>在JVM中，当代码执行到<code>String s1 = &quot;100&quot;</code> 时，会先看常量池里有没有字符串刚好是“100”这个对象，如果没有，在常量池里创建初始化该对象，并把引用指向它，如下图，绿色部分为常量池，存在于堆内存中。 </p>
@@ -361,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/19/说说Java-Integer/" rel="next" title="说说Java Integer">
-                <i class="fa fa-chevron-left"></i> 说说Java Integer
+              <a href="/2018/12/19/说说Java里的equals（上）/" rel="next" title="说说Java里的equals（上）">
+                <i class="fa fa-chevron-left"></i> 说说Java里的equals（上）
               </a>
             
           </div>
@@ -370,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/19/说说Java里的equals（上）/" rel="prev" title="说说Java里的equals（上）">
-                说说Java里的equals（上） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -425,17 +421,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -507,22 +494,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#String奇妙法（上）"><span class="nav-number">1.</span> <span class="nav-text">String奇妙法（上）</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
